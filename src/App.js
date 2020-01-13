@@ -11,27 +11,40 @@ class App extends React.Component {
       todos: [
         {
           task: 'Pay Bills',
-          id: Date.now(),
+          id: 1,
           completed: false
         },
         {
           task: 'Save money',
-          id: Date.now(),
+          id: 2,
           completed: false
         },
         {
           task: 'Splurge',
-          id: Date.now(),
+          id: 3,
           completed: false
         }
       ]
     }
   }
   
+  handleComplete = id => {
+    const todos = this.state.todos.map(todo => {
+      console.log(id)
+      if (todo.id === id) {
+        todo.completed = !todo.completed;
+        return todo
+      } else {
+        return todo
+      }
+    })
+    this.setState({todos}) 
+  }
+
   render() {
     return (
       <div>
-        <TodoList todos={this.state.todos}/>
+        <TodoList todos={this.state.todos} handleComplete={this.handleComplete}/>
       </div>
     );
   }
