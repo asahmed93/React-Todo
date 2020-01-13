@@ -44,7 +44,7 @@ class App extends React.Component {
   }
   
   handleComplete = id => {
-    const todos = this.state.todos.map(todo => {
+    const complete = this.state.todos.map(todo => {
       console.log(id)
       if (todo.id === id) {
         todo.completed = !todo.completed;
@@ -53,7 +53,13 @@ class App extends React.Component {
         return todo
       }
     })
-    this.setState({todos}) 
+    this.setState({complete}) 
+  }
+
+  handleClear = e => {
+    e.preventDefault();
+    const clear = this.state.todos.filter(todo => !todo.completed);
+    this.setState({clear})
   }
 
   render() {
@@ -61,8 +67,12 @@ class App extends React.Component {
       <div>
         <h1>YOUR TODO LIST</h1>
         <TodoList todos={this.state.todos} handleComplete={this.handleComplete}/>
-        <TodoForm value={this.state.todo} handleAdd={this.handleAdd}
-        handleChange={this.handleChange}/>
+        <TodoForm 
+          value={this.state.todo} 
+          handleAdd={this.handleAdd} 
+          handleChange={this.handleChange}
+          handleClear={this.handleClear}
+        />
       </div>
     );
   }
