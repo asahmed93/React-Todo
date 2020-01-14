@@ -1,4 +1,5 @@
 import React from 'react';
+import './index.css'
 import TodoList from './components/TodoComponents/TodoList'
 import TodoForm from "./components/TodoComponents/TodoForm"
 
@@ -58,13 +59,13 @@ class App extends React.Component {
 
   handleClear = e => {
     e.preventDefault();
-    const clear = this.state.todos.filter(todo => !todo.completed);
-    this.setState({clear})
+    const todos = this.state.todos.filter(todo => !todo.completed);
+    this.setState({todos})
   }
 
   render() {
     return (
-      <div>
+      <div className="page">
         <h1>YOUR TODO LIST</h1>
         <TodoList todos={this.state.todos} handleComplete={this.handleComplete}/>
         <TodoForm 

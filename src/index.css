@@ -1,0 +1,9 @@
+body{
+    text-align: center;
+    max-width: 50% auto;
+    
+}
+
+.page{
+    border: 1px solid red;
+}
